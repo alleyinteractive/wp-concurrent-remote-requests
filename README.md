@@ -1,4 +1,4 @@
-# plugin_name
+# wp-concurrent-remote-requests
 
 Stable tag: 0.1.0
 
@@ -10,38 +10,22 @@ Requires PHP: 7.4
 
 License: GPL v2 or later
 
-Tags: vendor_name, plugin_name
+Tags: alleyinteractive, wp-concurrent-remote-requests
 
-Contributors: author_username
+Contributors: alleyinteractive, srtfisher
 
-<!--delete-->
----
-This is a skeleton Wordpress plugin that can scaffold a WordPress plugin. This
-template includes a base plugin file, autoloaded PHP files, unit tests powered
-by [Mantle](https://mantle.alley.co/), and Continuous Integration [via GitHub
-Actions](.github/workflows). Actions are configured to test the plugin and and
-also build it for release. A `main-built` branch and `v0.1.0-built` tags will be
-created with all dependencies included for use when submoduling a plugin.
 
-Follow these steps to get started:
+[![Coding Standards](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml)
+[![Testing Suite](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml)
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run `make` (or `php ./configure.php`) to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your plugin.
----
-
-<!--/delete-->
-[![Coding Standards](https://github.com/alleyinteractive/create-wordpress-plugin/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/alleyinteractive/create-wordpress-plugin/actions/workflows/coding-standards.yml)
-[![Testing Suite](https://github.com/alleyinteractive/create-wordpress-plugin/actions/workflows/unit-test.yml/badge.svg)](https://github.com/alleyinteractive/create-wordpress-plugin/actions/workflows/unit-test.yml)
-
-plugin_description
+Feature plugin for concurrent HTTP remote requests.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require alleyinteractive/create-wordpress-plugin
+composer require alleyinteractive/wp-concurrent-remote-requests
 ```
 
 ## Usage
@@ -49,7 +33,7 @@ composer require alleyinteractive/create-wordpress-plugin
 Activate the plugin in WordPress and use it like so:
 
 ```php
-$plugin = Vendor_Name\Skeleton\Example_Plugin();
+$plugin = Alley\WP\Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests();
 $plugin->perform_magic();
 ```
 
@@ -65,7 +49,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Credits
 
-- [author_name](https://github.com/author_name)
+- [Sean Fisher](https://github.com/srtfisher)
 - [All Contributors](../../contributors)
 
 ## License

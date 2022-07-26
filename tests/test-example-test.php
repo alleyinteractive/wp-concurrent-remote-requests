@@ -1,5 +1,5 @@
 <?php
-namespace Vendor_Name\Skeleton\Tests;
+namespace Alley\WP\Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests\Tests;
 
 /**
  * Visit {@see https://mantle.alley.co/testing/test-framework.html} to learn more.

@@ -1,5 +1,5 @@
 <?php
-namespace Vendor_Name\Skeleton\Tests;
+namespace Alley\WP\Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests\Tests;
 
 use Mantle\Testkit\Test_Case as TestkitTest_Case;
 

@@ -1,48 +1,48 @@
 {
-    "name": "vendor_name/plugin_slug",
-    "description": "plugin_description",
-    "keywords": [
-        "vendor_name",
-        "plugin_slug"
-    ],
-    "homepage": "https://github.com/vendor_name/plugin_slug",
+    "name": "alleyinteractive/wp-concurrent-remote-requests",
+    "description": "Feature plugin for concurrent HTTP remote requests",
     "license": "GPL-2.0-or-later",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "alleyinteractive",
+        "wp-concurrent-remote-requests"
+    ],
     "authors": [
         {
-            "name": "author_name",
-            "email": "email@domain.com"
+            "name": "Sean Fisher",
+            "email": "srtfisher@gmail.com"
         }
     ],
+    "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
     "require": {
         "php": "^7.4 || ^8.0",
         "alleyinteractive/composer-wordpress-autoloader": "^0.4"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "^0.3",
-        "mantle-framework/testkit": "^0.2",
+        "mantle-framework/testkit": "^0.4",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "alleyinteractive/composer-wordpress-autoloader": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "pestphp/pest-plugin": true
+            "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
     },
     "extra": {
         "wordpress-autoloader": {
             "autoload": {
-                "Vendor_Name\\Skeleton\\": "src"
+                "Alley\\WP\\Concurrent_Remote_Requests\\Wp_Concurrent_Remote_Requests\\": "src"
             },
             "autoload-dev": {
-                "Vendor_Name\\Skeleton\\Tests\\": "tests"
+                "Alley\\WP\\Concurrent_Remote_Requests\\Wp_Concurrent_Remote_Requests\\Tests\\": "tests"
             }
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "phpcbf": "phpcbf --standard=./phpcs.xml.dist .",
         "phpcs": "phpcs --standard=./phpcs.xml.dist .",

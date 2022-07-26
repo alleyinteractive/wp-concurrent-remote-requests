@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: plugin_name
- * Plugin URI: https://github.com/vendor_name/plugin_slug
- * Description: plugin_description
+ * Plugin Name: wp-concurrent-remote-requests
+ * Plugin URI: https://github.com/alleyinteractive/plugin_slug
+ * Description: This is my plugin wp-concurrent-remote-requests
  * Version: 0.1.0
- * Author: author_name
- * Author URI: https://github.com/vendor_name/plugin_slug
+ * Author: Sean Fisher
+ * Author URI: https://github.com/alleyinteractive/plugin_slug
  * Requires at least: 5.9
  * Tested up to: 5.9
  *
@@ -26,7 +26,7 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 		function() {
 			?>
 			<div class="notice notice-error">
-				<p><?php esc_html_e( 'Composer is not installed and the plugin_name cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'plugin_domain' ); ?></p>
+				<p><?php esc_html_e( 'Composer is not installed and the wp-concurrent-remote-requests cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'plugin_domain' ); ?></p>
 			</div>
 			<?php
 		}
