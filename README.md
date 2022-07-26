@@ -17,8 +17,11 @@ Contributors: alleyinteractive, srtfisher
 [![Coding Standards](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml)
 [![Testing Suite](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml)
 
-A WordPress Feature plugin for concurrent HTTP remote requests. Adds namespaced
-helper functions to make concurrent remote requests. Being tracked in https://github.com/alleyinteractive/wp-concurrent-remote-requests/pull/2 and https://core.trac.wordpress.org/ticket/37459.
+A WordPress Feature plugin for concurrent HTTP remote requests in WordPress.
+Adds namespaced helper functions to make concurrent remote requests. Being
+tracked in
+https://github.com/alleyinteractive/wp-concurrent-remote-requests/pull/2 and
+https://core.trac.wordpress.org/ticket/37459.
 
 ## Installation
 
@@ -33,12 +36,33 @@ composer require alleyinteractive/wp-concurrent-remote-requests
 Activate the plugin in WordPress and use it like so:
 
 ```php
+// Supports an array of URLs:
 \Alley\WP\Concurrent_Remote_Requests\wp_remote_get(
 	[
 		'https://alley.co/',
 		'https://wordpress.org/',
 	]
 );
+
+// Or more complex requests.
+\Alley\WP\Concurrent_Remote_Requests\wp_remote_request(
+	[
+		[
+			'https://alley.co/',
+			[
+				'body'   => [ ... ],
+				'method' => 'POST',
+			],
+		],
+		[
+			'https://wordpress.org/',
+			[
+				'method' => 'DELETE',
+			],
+		],
+	]
+);
+
 ```
 
 ## Testing
