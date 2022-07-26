@@ -18,7 +18,7 @@ Contributors: alleyinteractive, srtfisher
 [![Testing Suite](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml)
 
 A WordPress Feature plugin for concurrent HTTP remote requests. Adds namespaced
-helper functions to make concurrent remote requests.
+helper functions to make concurrent remote requests. Being tracked in https://github.com/alleyinteractive/wp-concurrent-remote-requests/pull/2 and https://core.trac.wordpress.org/ticket/37459.
 
 ## Installation
 
@@ -33,8 +33,12 @@ composer require alleyinteractive/wp-concurrent-remote-requests
 Activate the plugin in WordPress and use it like so:
 
 ```php
-$plugin = Alley\WP\Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests\Wp_Concurrent_Remote_Requests();
-$plugin->perform_magic();
+\Alley\WP\Concurrent_Remote_Requests\wp_remote_get(
+	[
+		'https://alley.co/',
+		'https://wordpress.org/',
+	]
+);
 ```
 
 ## Testing
