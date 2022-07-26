@@ -33,13 +33,18 @@
         },
         "sort-packages": true
     },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ]
+    },
     "extra": {
         "wordpress-autoloader": {
             "autoload": {
-                "Alley\\WP\\Concurrent_Remote_Requests\\Wp_Concurrent_Remote_Requests\\": "src"
+                "Alley\\WP\\Concurrent_Remote_Requests\\": "src"
             },
             "autoload-dev": {
-                "Alley\\WP\\Concurrent_Remote_Requests\\Wp_Concurrent_Remote_Requests\\Tests\\": "tests"
+                "Alley\\WP\\Concurrent_Remote_Requests\\Tests\\": "tests"
             }
         }
     },

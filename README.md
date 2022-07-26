@@ -1,4 +1,4 @@
-# wp-concurrent-remote-requests
+# Concurrent Remote Requests Feature Plugin
 
 Stable tag: 0.1.0
 
@@ -14,11 +14,11 @@ Tags: alleyinteractive, wp-concurrent-remote-requests
 
 Contributors: alleyinteractive, srtfisher
 
-
 [![Coding Standards](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/coding-standards.yml)
 [![Testing Suite](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml/badge.svg)](https://github.com/alleyinteractive/wp-concurrent-remote-requests/actions/workflows/unit-test.yml)
 
-Feature plugin for concurrent HTTP remote requests.
+A WordPress Feature plugin for concurrent HTTP remote requests. Adds namespaced
+helper functions to make concurrent remote requests.
 
 ## Installation
 
