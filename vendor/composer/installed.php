@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'alleyinteractive/wp-concurrent-remote-requests',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'alleyinteractive/composer-wordpress-autoloader' => array(
+            'pretty_version' => 'v0.4.1',
+            'version' => '0.4.1.0',
+            'reference' => '4964609549c2589609607aae04cd1079b1438c0c',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../alleyinteractive/composer-wordpress-autoloader',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'alleyinteractive/wordpress-autoloader' => array(
+            'pretty_version' => 'v0.2.0',
+            'version' => '0.2.0.0',
+            'reference' => 'b02e276f1fa710f7985ae1acb352e524d65dd38e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../alleyinteractive/wordpress-autoloader',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'alleyinteractive/wp-concurrent-remote-requests' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
