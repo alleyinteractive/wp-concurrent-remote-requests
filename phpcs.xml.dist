@@ -4,6 +4,11 @@
 
   <!-- Include Alley Rules -->
   <rule ref="Alley-Interactive" />
+  <rule ref="WordPress">
+    <exclude name="Generic.Arrays.DisallowLongArraySyntax.Found" />
+    <exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound" />
+    <exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound" />
+  </rule>
 
   <!--
   Pass some flags to PHPCS:
