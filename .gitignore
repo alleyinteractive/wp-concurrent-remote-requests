@@ -22,5 +22,3 @@ Thumbs.db
 *.code-workspace
 .idea
 .vscode
-
-composer.lock
