@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6a6a542f81642987236005d0f022635",
+    "content-hash": "660c0086a72317cd4d5357ab54456889",
     "packages": [
         {
             "name": "alleyinteractive/composer-wordpress-autoloader",
@@ -6780,9 +6780,18 @@
             "time": "2020-05-13T23:57:56+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "mantle-framework/testkit",
+            "version": "dev-main",
+            "alias": "0.4.0",
+            "alias_normalized": "0.4.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "mantle-framework/testkit": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
