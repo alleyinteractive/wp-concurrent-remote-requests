@@ -5,6 +5,8 @@
 
 use function Mantle\Testing\tests_add_filter;
 
+require_once __DIR__ . '/../vendor/wordpress-autoload.php';
+
 /**
  * Visit {@see https://mantle.alley.co/testing/test-framework.html} to learn more.
  */

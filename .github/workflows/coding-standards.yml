@@ -39,8 +39,6 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
           tools: composer:v2
           coverage: none
-      - name: Validate Composer
-        run: composer validate --strict
       - name: Install dependencies
         uses: nick-invision/retry@v2.7.0
         with:
