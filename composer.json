@@ -38,9 +38,6 @@
         ]
     },
     "extra": {
-        "branch-alias": {
-            "dev-main": "0.1.x-dev"
-        },
         "wordpress-autoloader": {
             "autoload": {
                 "Alley\\WP\\Concurrent_Remote_Requests\\": "src"
