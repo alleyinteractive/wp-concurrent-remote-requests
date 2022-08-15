@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3679b03c8e1be316e7bb20a36e84f9db",
+    "content-hash": "0e87805da7aab95f1ff70c9e615332cc",
     "packages": [
         {
             "name": "alleyinteractive/composer-wordpress-autoloader",
-            "version": "v0.6.0",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alleyinteractive/composer-wordpress-autoloader.git",
-                "reference": "01662487d8121b0fe2e08d904338a825555de300"
+                "reference": "8f646480e9942a8e425f70ce2434cc71ac24b583"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alleyinteractive/composer-wordpress-autoloader/zipball/01662487d8121b0fe2e08d904338a825555de300",
-                "reference": "01662487d8121b0fe2e08d904338a825555de300",
+                "url": "https://api.github.com/repos/alleyinteractive/composer-wordpress-autoloader/zipball/8f646480e9942a8e425f70ce2434cc71ac24b583",
+                "reference": "8f646480e9942a8e425f70ce2434cc71ac24b583",
                 "shasum": ""
             },
             "require": {
-                "alleyinteractive/wordpress-autoloader": "^1.0",
+                "alleyinteractive/wordpress-autoloader": "^1.1.0",
                 "composer-plugin-api": "^2.0",
                 "php": "^7.4.0|^8.0|^8.1"
             },
@@ -59,22 +59,22 @@
             "description": "Autoload files using WordPress File Conventions using Composer",
             "support": {
                 "issues": "https://github.com/alleyinteractive/composer-wordpress-autoloader/issues",
-                "source": "https://github.com/alleyinteractive/composer-wordpress-autoloader/tree/v0.6.0"
+                "source": "https://github.com/alleyinteractive/composer-wordpress-autoloader/tree/v0.7.0"
             },
-            "time": "2022-07-29T21:20:17+00:00"
+            "time": "2022-08-10T14:17:57+00:00"
         },
         {
             "name": "alleyinteractive/wordpress-autoloader",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alleyinteractive/wordpress-autoloader.git",
-                "reference": "66ea7756cde2a12094c4e3f51dedf382e8f5770c"
+                "reference": "f250c48b2d6ef6dfc35c59afb4f17166b0684639"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alleyinteractive/wordpress-autoloader/zipball/66ea7756cde2a12094c4e3f51dedf382e8f5770c",
-                "reference": "66ea7756cde2a12094c4e3f51dedf382e8f5770c",
+                "url": "https://api.github.com/repos/alleyinteractive/wordpress-autoloader/zipball/f250c48b2d6ef6dfc35c59afb4f17166b0684639",
+                "reference": "f250c48b2d6ef6dfc35c59afb4f17166b0684639",
                 "shasum": ""
             },
             "require": {
@@ -103,9 +103,9 @@
             "description": "Autoload files using WordPress File Conventions",
             "support": {
                 "issues": "https://github.com/alleyinteractive/wordpress-autoloader/issues",
-                "source": "https://github.com/alleyinteractive/wordpress-autoloader/tree/v1.0.0"
+                "source": "https://github.com/alleyinteractive/wordpress-autoloader/tree/v1.1.0"
             },
-            "time": "2022-05-10T18:07:17+00:00"
+            "time": "2022-08-09T19:15:49+00:00"
         }
     ],
     "packages-dev": [
