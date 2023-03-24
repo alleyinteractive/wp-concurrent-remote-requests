@@ -2,7 +2,7 @@
     "name": "alleyinteractive/wp-concurrent-remote-requests",
     "description": "Feature plugin for concurrent HTTP remote requests",
     "license": "GPL-2.0-or-later",
-    "type": "wordpress-plugin",
+    "type": "library",
     "keywords": [
         "alleyinteractive",
         "wp-concurrent-remote-requests"
