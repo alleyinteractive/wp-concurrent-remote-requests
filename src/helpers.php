@@ -7,6 +7,8 @@
 
 namespace Alley\WP\Concurrent_Remote_Requests;
 
+use WP_Error;
+
 /**
  * Performs an HTTP request and returns its response.
  *
