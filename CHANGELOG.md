@@ -2,6 +2,12 @@
 
 All notable changes to `plugin_name` will be documented in this file.
 
+## v1.0.2 - 2023-04-11
+
+- Include `WP_Error` to appease PHPStan.
+
+**Full Changelog**: https://github.com/alleyinteractive/wp-concurrent-remote-requests/compare/v1.0.1...v1.0.2
+
 ## v1.0.1 - 2023-03-24
 
 - Remove `wordpress-plugin` as a package type.
