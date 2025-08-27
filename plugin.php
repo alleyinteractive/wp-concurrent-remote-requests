@@ -20,10 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Check if Composer is installed.
-if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
+if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	\add_action(
 		'admin_notices',
-		function() {
+		function () {
 			?>
 			<div class="notice notice-error">
 				<p><?php esc_html_e( 'Composer is not installed and the wp-concurrent-remote-requests cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'plugin_domain' ); ?></p>
@@ -36,4 +36,4 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 }
 
 // Load Composer dependencies.
-require_once __DIR__ . '/vendor/wordpress-autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';

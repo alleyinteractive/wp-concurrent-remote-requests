@@ -16,8 +16,12 @@ use WP_HTTP_Proxy;
 use WP_HTTP_Requests_Hooks;
 use WP_HTTP_Requests_Response;
 
+if ( ! class_exists( WP_Http::class ) ) {
+	return;
+}
+
 /**
- * Example Plugin
+ * Extension of WP_Http for concurrent requests.
  */
 class WP_Http extends \WP_Http {
 	/**
