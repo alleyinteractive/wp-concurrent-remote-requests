@@ -3,7 +3,7 @@
  * Plugin Name: wp-concurrent-remote-requests
  * Plugin URI: https://github.com/alleyinteractive/plugin_slug
  * Description: This is my plugin wp-concurrent-remote-requests
- * Version: 0.1.0
+ * Version: 1.1.0
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/plugin_slug
  * Requires at least: 5.9
