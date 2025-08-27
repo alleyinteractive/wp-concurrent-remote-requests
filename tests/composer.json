@@ -5,7 +5,7 @@
     "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
     "require": {
         "php": "^7.4 || ^8.0",
-        "alleyinteractive/wp-concurrent-remote-requests": "dev-main as 1.1.0"
+        "alleyinteractive/wp-concurrent-remote-requests": "dev-feature/update-2025 as 1.1.0"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "*",
