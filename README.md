@@ -19,7 +19,7 @@ Contributors: alleyinteractive, srtfisher
 A WordPress Feature plugin for concurrent HTTP remote requests in WordPress.
 Adds namespaced helper functions to make concurrent remote requests. Being
 tracked in
-https://github.com/alleyinteractive/wp-concurrent-remote-requests/pull/2 and
+https://github.com/WordPress/wordpress-develop/pull/3022 and
 https://core.trac.wordpress.org/ticket/37459.
 
 ## Installation
