@@ -4,8 +4,7 @@
     "type": "library",
     "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
     "require": {
-        "php": "^7.4 || ^8.0",
-        "alleyinteractive/wp-concurrent-remote-requests": "dev-feature/update-2025 as 1.1.0"
+        "php": "^7.4 || ^8.0"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "*",
@@ -18,31 +17,19 @@
             "alleyinteractive/composer-wordpress-autoloader": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
+        "lock": false,
         "sort-packages": true
     },
-    "extra": {
-        "wordpress-autoloader": {
-            "autoload": {
-                "Alley\\WP\\Concurrent_Remote_Requests\\": "src"
-            },
-            "autoload-dev": {
-                "Alley\\WP\\Concurrent_Remote_Requests\\Tests\\": "tests"
-            }
+    "autoload-dev": {
+        "psr-4": {
+            "Alley\\WP\\Concurrent_Remote_Requests\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "phpcbf": "phpcbf --standard=./phpcs.xml.dist .",
-        "phpcs": "phpcs --standard=./phpcs.xml.dist .",
         "phpunit": "phpunit",
-        "test": [
-            "@phpcs",
-            "@phpunit"
+        "post-autoload-dump": [
+            "rm -rf vendor/alleyinteractive/wp-concurrent-remote-requests/src",
+            "ln -s ../../../../src vendor/alleyinteractive/wp-concurrent-remote-requests/src"
         ]
-    },
-    "repositories": {
-        "local": {
-            "type": "path",
-            "url": "../"
-        }
     }
 }
