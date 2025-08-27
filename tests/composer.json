@@ -4,7 +4,8 @@
     "type": "library",
     "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
     "require": {
-        "php": "^7.4 || ^8.0"
+        "php": "^7.4 || ^8.0",
+        "alleyinteractive/wp-concurrent-remote-requests": "dev-main as 1.1.0"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "*",
@@ -37,5 +38,11 @@
             "@phpcs",
             "@phpunit"
         ]
+    },
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "../"
+        }
     }
 }
