@@ -33,9 +33,6 @@ class ConcurrentRequestsTest extends TestCase {
 
 	/**
 	 * Test parallel requests.
-	 *
-	 * @ticket 33055
-	 * @covers ::wp_remote_request
 	 */
 	public function test_parallel_request() {
 		$responses = \Alley\WP\Concurrent_Remote_Requests\wp_remote_request(
@@ -65,9 +62,6 @@ class ConcurrentRequestsTest extends TestCase {
 
 	/**
 	 * Test parallel requests with short circuiting.
-	 *
-	 * @ticket 33055
-	 * @covers ::wp_remote_request
 	 */
 	public function test_parallel_request_short_circuit() {
 		add_filter(
