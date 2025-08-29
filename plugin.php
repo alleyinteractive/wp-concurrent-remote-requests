@@ -1,18 +1,13 @@
 <?php
 /**
  * Plugin Name: wp-concurrent-remote-requests
- * Plugin URI: https://github.com/alleyinteractive/plugin_slug
- * Description: This is my plugin wp-concurrent-remote-requests
+ * Plugin URI: https://github.com/alleyinteractive/wp-concurrent-remote-requests
+ * Description: Feature plugin for concurrent HTTP remote requests.
  * Version: 1.1.0
  * Author: Sean Fisher
- * Author URI: https://github.com/alleyinteractive/plugin_slug
- * Requires at least: 5.9
- * Tested up to: 5.9
- *
- * Text Domain: plugin_domain
- * Domain Path: /languages/
- *
- * @package package_name
+ * Author URI: https://github.com/alleyinteractive/wp-concurrent-remote-requests
+ * Requires at least: 6.5
+ * Tested up to: 6.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
