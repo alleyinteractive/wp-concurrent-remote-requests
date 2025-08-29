@@ -1,10 +1,12 @@
 <?php
 namespace Alley\WP\Concurrent_Remote_Requests\Tests;
 
+use Mantle\Testkit\TestCase;
+
 /**
  * Extracted tests from WP_HTTP_UnitTestCase.
  */
-class Test_Concurrent_Requests extends Test_Case {
+class ConcurrentRequestsTest extends TestCase {
 	public $redirection_script = 'http://api.wordpress.org/core/tests/1.0/redirection.php';
 
 	/**
@@ -12,7 +14,7 @@ class Test_Concurrent_Requests extends Test_Case {
 	 *
 	 * @param array|WP_Error $response HTTP response.
 	 */
-	public function skipTestOnTimeout( $response ) {
+	public function skipTestOnTimeout( $response ): void {
 		if ( ! is_wp_error( $response ) ) {
 			return;
 		}
@@ -31,9 +33,6 @@ class Test_Concurrent_Requests extends Test_Case {
 
 	/**
 	 * Test parallel requests.
-	 *
-	 * @ticket 33055
-	 * @covers ::wp_remote_request
 	 */
 	public function test_parallel_request() {
 		$responses = \Alley\WP\Concurrent_Remote_Requests\wp_remote_request(
@@ -63,9 +62,6 @@ class Test_Concurrent_Requests extends Test_Case {
 
 	/**
 	 * Test parallel requests with short circuiting.
-	 *
-	 * @ticket 33055
-	 * @covers ::wp_remote_request
 	 */
 	public function test_parallel_request_short_circuit() {
 		add_filter(

@@ -7,17 +7,13 @@
 
 namespace Alley\WP\Concurrent_Remote_Requests;
 
-use Requests_Exception;
-use Requests_Proxy_HTTP;
-use Requests_Response;
-use Requests;
 use WP_Error;
 use WP_HTTP_Proxy;
 use WP_HTTP_Requests_Hooks;
 use WP_HTTP_Requests_Response;
 
 /**
- * Example Plugin
+ * Extension of WP_Http for concurrent requests.
  */
 class WP_Http extends \WP_Http {
 	/**
@@ -28,7 +24,7 @@ class WP_Http extends \WP_Http {
 	 *
 	 * @since 2.7.0
 	 *
-	 * @param string       $url  The request URL.
+	 * @param string|array $url  The request URL or an array of requests.
 	 * @param string|array $args {
 	 *     Optional. Array or string of HTTP request arguments.
 	 *
@@ -70,8 +66,21 @@ class WP_Http extends \WP_Http {
 	 *     @type int          $limit_response_size Size in bytes to limit the response to. Default null.
 	 *
 	 * }
-	 * @return array|WP_Error Array or array of arrays containing 'headers', 'body', 'response', 'cookies', 'filename'.
-	 *                        A WP_Error instance upon error.
+	 * @return array|WP_Error {
+	 *     Array of response data, or a WP_Error instance upon error.
+	 *
+	 *     @type \WpOrg\Requests\Utility\CaseInsensitiveDictionary $headers       Response headers keyed by name.
+	 *     @type string                                            $body          Response body.
+	 *     @type array                                             $response      {
+	 *         Array of HTTP response data.
+	 *
+	 *         @type int|false    $code    HTTP response status code.
+	 *         @type string|false $message HTTP response message.
+	 *     }
+	 *     @type WP_HTTP_Cookie[]                                  $cookies       Array of cookies set by the server.
+	 *     @type string|null                                       $filename      Optional. Filename of the response.
+	 *     @type WP_HTTP_Requests_Response|null                    $http_response Response object.
+	 * }
 	 */
 	public function request( $url, $args = array() ) {
 		if ( is_array( $url ) ) {
@@ -104,8 +113,8 @@ class WP_Http extends \WP_Http {
 				mbstring_binary_safe_encoding();
 
 				try {
-					$raw_responses = Requests::request_multiple( $pending_requests );
-				} catch ( Requests_Exception $e ) {
+					$raw_responses = \WpOrg\Requests\Requests::request_multiple( $pending_requests );
+				} catch ( \WpOrg\Requests\Exception $e ) {
 					$raw_responses = new WP_Error( 'http_request_failed', $e->getMessage() );
 				}
 
@@ -141,14 +150,14 @@ class WP_Http extends \WP_Http {
 		mbstring_binary_safe_encoding();
 
 		try {
-			$response = Requests::request(
+			$response = \WpOrg\Requests\Requests::request(
 				$formatted['url'],
 				$formatted['headers'],
 				$formatted['data'],
 				$formatted['type'],
 				$formatted['options']
 			);
-		} catch ( Requests_Exception $e ) {
+		} catch ( \WpOrg\Requests\Exception $e ) {
 			$response = new WP_Error( 'http_request_failed', $e->getMessage() );
 		}
 
@@ -271,13 +280,13 @@ class WP_Http extends \WP_Http {
 		 *
 		 *  - An array containing 'headers', 'body', 'response', 'cookies', and 'filename' elements
 		 *  - A WP_Error instance
-		 *  - boolean false to avoid short-circuiting the response
+		 *  - Boolean false to avoid short-circuiting the response
 		 *
-		 * Returning any other value may result in unexpected behaviour.
+		 * Returning any other value may result in unexpected behavior.
 		 *
 		 * @since 2.9.0
 		 *
-		 * @param false|array|WP_Error $preempt     A preemptive return value of an HTTP request. Default false.
+		 * @param false|array|WP_Error $response    A preemptive return value of an HTTP request. Default false.
 		 * @param array                $parsed_args HTTP request arguments.
 		 * @param string               $url         The request URL.
 		 */
@@ -298,19 +307,19 @@ class WP_Http extends \WP_Http {
 			}
 		}
 
-		$parsed_url = wp_parse_url( $url );
+		$parsed_url = parse_url( $url ); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url
 
 		if ( empty( $url ) || empty( $parsed_url['scheme'] ) ) {
 			$response = new WP_Error( 'http_request_failed', __( 'A valid URL was not provided.' ) );
 			/** This action is documented in wp-includes/class-wp-http.php */
-			do_action( 'http_api_debug', $response, 'response', 'Requests', $parsed_args, $url );
+			do_action( 'http_api_debug', $response, 'response', \WpOrg\Requests\Requests::class, $parsed_args, $url );
 			return $response;
 		}
 
 		if ( $this->block_request( $url ) ) {
 			$response = new WP_Error( 'http_request_not_executed', __( 'User has blocked requests through HTTP.' ) );
 			/** This action is documented in wp-includes/class-wp-http.php */
-			do_action( 'http_api_debug', $response, 'response', 'Requests', $parsed_args, $url );
+			do_action( 'http_api_debug', $response, 'response', \WpOrg\Requests\Requests::class, $parsed_args, $url );
 			return $response;
 		}
 
@@ -327,7 +336,7 @@ class WP_Http extends \WP_Http {
 			if ( ! wp_is_writable( dirname( $parsed_args['filename'] ) ) ) {
 				$response = new WP_Error( 'http_request_failed', __( 'Destination directory for file streaming does not exist or is not writable.' ) );
 				/** This action is documented in wp-includes/class-wp-http.php */
-				do_action( 'http_api_debug', $response, 'response', 'Requests', $parsed_args, $url );
+				do_action( 'http_api_debug', $response, 'response', \WpOrg\Requests\Requests::class, $parsed_args, $url );
 				return $response;
 			}
 		}
@@ -353,12 +362,12 @@ class WP_Http extends \WP_Http {
 			'hooks'     => new WP_HTTP_Requests_Hooks( $url, $parsed_args ),
 		);
 
-		// Ensure redirects follow browser behaviour.
-		$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'browser_redirect_compatibility' ) );
+		// Ensure redirects follow browser behavior.
+		$options['hooks']->register( 'requests.before_redirect', array( static::class, 'browser_redirect_compatibility' ) );
 
 		// Validate redirected URLs.
 		if ( function_exists( 'wp_kses_bad_protocol' ) && $parsed_args['reject_unsafe_urls'] ) {
-			$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'validate_redirects' ) );
+			$options['hooks']->register( 'requests.before_redirect', array( static::class, 'validate_redirects' ) );
 		}
 
 		if ( $parsed_args['stream'] ) {
@@ -375,7 +384,7 @@ class WP_Http extends \WP_Http {
 			$options['max_bytes'] = $parsed_args['limit_response_size'];
 		}
 
-		// If we've got cookies, use and convert them to Requests_Cookie.
+		// If we've got cookies, use and convert them to WpOrg\Requests\Cookie.
 		if ( ! empty( $parsed_args['cookies'] ) ) {
 			$options['cookies'] = self::normalize_cookies( $parsed_args['cookies'] );
 		}
@@ -399,15 +408,16 @@ class WP_Http extends \WP_Http {
 		 * @since 2.8.0
 		 * @since 5.1.0 The `$url` parameter was added.
 		 *
-		 * @param bool   $ssl_verify Whether to verify the SSL connection. Default true.
-		 * @param string $url        The request URL.
+		 * @param bool|string $ssl_verify Boolean to control whether to verify the SSL connection
+		 *                                or path to an SSL certificate.
+		 * @param string      $url        The request URL.
 		 */
 		$options['verify'] = apply_filters( 'https_ssl_verify', $options['verify'], $url );
 
 		// Check for proxies.
 		$proxy = new WP_HTTP_Proxy();
 		if ( $proxy->is_enabled() && $proxy->send_through_proxy( $url ) ) {
-			$options['proxy'] = new Requests_Proxy_HTTP( $proxy->host() . ':' . $proxy->port() );
+			$options['proxy'] = new \WpOrg\Requests\Proxy\Http( $proxy->host() . ':' . $proxy->port() );
 
 			if ( $proxy->use_authentication() ) {
 				$options['proxy']->use_authentication = true;
@@ -429,15 +439,15 @@ class WP_Http extends \WP_Http {
 	/**
 	 * Format a response into the expected shape.
 	 *
-	 * @param Requests_Response|WP_Error $response Response to format.
-	 * @param array                      $args     Request arguments.
-	 * @param string                     $url      Request URL.
+	 * @param \WpOrg\Requests\Response|WP_Error $response Response to format.
+	 * @param array                             $args     Request arguments.
+	 * @param string                            $url      Request URL.
 	 * @return array|WP_Error
 	 */
 	protected function format_response( $response, $args, $url ) {
 		// Convert the response into an array.
 		if ( ! is_wp_error( $response ) ) {
-			$http_response = new WP_HTTP_Requests_Response( $response, $args['filename'] );
+			$http_response = new \WP_HTTP_Requests_Response( $response, $args['filename'] );
 			$response      = $http_response->to_array();
 
 			// Add the original object to the array.
@@ -452,10 +462,10 @@ class WP_Http extends \WP_Http {
 		 * @param array|WP_Error $response    HTTP response or WP_Error object.
 		 * @param string         $context     Context under which the hook is fired.
 		 * @param string         $class       HTTP transport used.
-		 * @param array          $parsed_args HTTP request arguments.
+		 * @param array          $args        HTTP request arguments.
 		 * @param string         $url         The request URL.
 		 */
-		do_action( 'http_api_debug', $response, 'response', 'Requests', $args, $url );
+		do_action( 'http_api_debug', $response, 'response', \WpOrg\Requests\Requests::class, $args, $url );
 
 		if ( is_wp_error( $response ) ) {
 			return $response;
@@ -553,7 +563,7 @@ class WP_Http extends \WP_Http {
 			if ( ! empty( $args ) ) {
 				_doing_it_wrong(
 					__FUNCTION__,
-					esc_html__( 'Arguments passed to the second $args parameter are ignored when $url is an array of parallel requests.' ),
+					__( 'Arguments passed to the second $args parameter are ignored when $url is an array of parallel requests.' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'6.0.0'
 				);
 			}

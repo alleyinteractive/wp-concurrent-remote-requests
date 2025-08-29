@@ -104,6 +104,8 @@ function wp_remote_head( $url, $args = array() ) {
  * @return WP_Http HTTP Transport object.
  */
 function _wp_http_get_object() {
+	require_once __DIR__ . '/class-wp-http.php';
+
 	static $http = null;
 
 	if ( is_null( $http ) ) {

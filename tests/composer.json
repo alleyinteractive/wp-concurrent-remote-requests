@@ -1,0 +1,35 @@
+{
+    "name": "alleyinteractive/wp-concurrent-remote-requests-tests",
+    "description": "Tests for alleyinteractive/wp-concurrent-remote-requests",
+    "type": "library",
+    "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "alleyinteractive/alley-coding-standards": "*",
+        "mantle-framework/testkit": "^1.9"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "alleyinteractive/composer-wordpress-autoloader": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "lock": false,
+        "sort-packages": true
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alley\\WP\\Concurrent_Remote_Requests\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "phpunit": "phpunit",
+        "post-autoload-dump": [
+            "rm -rf vendor/alleyinteractive/wp-concurrent-remote-requests/src",
+            "ln -s ../../../../src vendor/alleyinteractive/wp-concurrent-remote-requests/src"
+        ]
+    }
+}
