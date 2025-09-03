@@ -1,6 +1,6 @@
 # Concurrent Remote Requests Feature Plugin
 
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 Requires at least: 5.9
 

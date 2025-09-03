@@ -3,11 +3,13 @@
  * Plugin Name: wp-concurrent-remote-requests
  * Plugin URI: https://github.com/alleyinteractive/wp-concurrent-remote-requests
  * Description: Feature plugin for concurrent HTTP remote requests.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/wp-concurrent-remote-requests
  * Requires at least: 6.5
  * Tested up to: 6.8
+ *
+ * @package wp-concurrent-remote-requests
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
