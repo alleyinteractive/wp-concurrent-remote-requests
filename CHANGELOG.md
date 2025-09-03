@@ -2,6 +2,10 @@
 
 All notable changes to `plugin_name` will be documented in this file.
 
+## v1.1.1
+
+- Fix issue with exception not being converted to WP_Error.
+
 ## v1.1.0
 
 - Update the plugin with the latest changes from core.
